@@ -12,7 +12,6 @@ import {
   View,
   Button,
 } from 'react-native';
-import { pick } from '@react-native-documents/picker';
 import { useNavigation } from '@react-navigation/native';
 import type { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
@@ -44,22 +43,6 @@ function HomeScreen() {
             navigation.navigate('Pdf', {
               path: 'https://www.princexml.com/samples/textbook/somatosensory.pdf',
             });
-          }}
-        />
-        <Button
-          title="open file"
-          onPress={async () => {
-            try {
-              const [result] = await pick({
-                mode: 'open',
-              });
-              console.log(result);
-              navigation.navigate('Pdf', {
-              path: result.uri,
-            });
-            } catch (err) {
-              console.error('Error picking file:', err);
-            }
           }}
         />
       </View>
